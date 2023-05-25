@@ -1,18 +1,57 @@
 <%- include('header') %>
 
   <main class="wrapper">
-    <% data.forEach((item)=> { %>
-      <div>
-        <h3>
-          <%= item.name %>
-        </h3>
-        <p>Day of Week: <%= item.dayOfWeek %>
-        </p>
-        <p>Meal Type: <%= item.mealType %>
-        </p>
-        <img src="<%= item.imageUrl %>" alt="Meal Image">
+    <form method="POST">
+
+      <div class="d-flex justify-content-between">
+
+        <div>
+          <span class="">
+            Meals list
+          </span>
+
+        </div>
+        <div>
+          <button class="btn btn-light btn-outline-dark" type="submit">
+            REFRESH
+          </button>
+        </div>
       </div>
-      <% }); %>
+    </form>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+      <% data.meals.forEach((meal)=> { %>
+        <!-- <div>
+        <h2>
+          <%= meal.name %>
+        </h2>
+        <p><strong>Day of the Week:</strong>
+          <%= meal.dayOfWeek %>
+        </p>
+        <p><strong>Meal Type:</strong>
+          <%= meal.mealType %>
+        </p>
+        <img src="<%= meal.imageUrl %>" alt="<%= meal.name %>" />
+      </div> -->
+        <div class="col ">
+          <div class="d-flex">
+            <img src="<%= meal.imageUrl %>" alt="<%= meal.name %>" width="40%" height="40%" />
+
+            <div class="card-body  " style="position: relative;">
+              <div class="ml-2 float-left" style="padding-left: 5px;">
+                <%= meal.name %>
+              </div>
+              <div style="bottom: 0;position: absolute;right: 0;">
+                <%= meal.dayOfWeek %> - <%= meal.mealType %>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+    </div>
+
   </main>
 
 

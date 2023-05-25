@@ -10,7 +10,8 @@ app.set('view engine', 'ejs');
 app.get("/", async (req, res) => {
   try {
     const data = await Plan.aggregate([{ $sample: { size: 1 } }]);
-    res.render('index', { data });
+    console.log(data[0] )
+    res.render('index', { data: data[0] });
   } catch (error) {
     // Handle any errors that occur
     res.status(500).send('Internal Server Error');
@@ -20,7 +21,7 @@ app.get("/", async (req, res) => {
 app.post("/", async (req, res) => {
   try {
     const data = await Plan.aggregate([{ $sample: { size: 1 } }]);
-    res.render('index', { data });
+    res.render('index', { data: data[0] });
   } catch (error) {
     // Handle any errors that occur
     res.status(500).send('Internal Server Error');
